@@ -2,14 +2,16 @@
 
 :root {
   --cosmic-silver: #c0c0c0;
-  --deep-space: #0a0a0a;
+  --deep-space: #000000;
+  --dark-space: #0a0a0a;
+  --midnight-blue: #0d1117;
   --nebula-purple: #6a0dad;
   --cosmic-blue: #1e3a8a;
   --star-white: #ffffff;
   --energy-yellow: #ffd700;
   --galactus-purple: #4b0082;
   --space-gray: #2d2d2d;
-  --cosmic-gradient: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-blue) 50%, var(--nebula-purple) 100%);
+  --cosmic-gradient: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #0d1117 100%);
 }
 
 * {
@@ -20,7 +22,7 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background: var(--cosmic-gradient);
+  background: #000000;
   background-attachment: fixed;
   color: var(--star-white);
   line-height: 1.6;
@@ -29,7 +31,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Cosmic background animation */
+/* Night sky starfield background */
 body::before {
   content: '';
   position: fixed;
@@ -38,20 +40,49 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
-    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-    radial-gradient(1px 1px at 130px 80px, #fff, transparent),
-    radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+    radial-gradient(1px 1px at 10px 15px, #fff, transparent),
+    radial-gradient(1px 1px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 25px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 130px 80px, #fff, transparent),
+    radial-gradient(1px 1px at 160px 30px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 70px 120px, #fff, transparent),
+    radial-gradient(2px 2px at 180px 60px, #fff, transparent),
+    radial-gradient(1px 1px at 25px 95px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 145px 5px, #fff, transparent),
+    radial-gradient(1px 1px at 110px 105px, rgba(255, 255, 255, 0.8), transparent);
   background-repeat: repeat;
-  background-size: 200px 100px;
+  background-size: 200px 130px;
   animation: twinkle 4s linear infinite;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
+}
+
+/* Additional star layer for depth */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 50px 50px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 100px 100px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 150px 20px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 30px 110px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 170px 90px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 85px 65px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 120px 45px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 15px 75px, rgba(255, 255, 255, 0.6), transparent);
+  background-repeat: repeat;
+  background-size: 190px 125px;
+  animation: twinkle 5s linear infinite reverse;
+  pointer-events: none;
+  z-index: 0;
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
+  0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }
 }
 
@@ -59,11 +90,13 @@ body::before {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Navigation */
 .cosmic-nav {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 2px solid var(--cosmic-silver);
   position: sticky;
@@ -130,6 +163,8 @@ body::before {
   display: flex;
   align-items: center;
   min-height: 80vh;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content {
@@ -210,22 +245,6 @@ img {
   display: block;
 }
 
-/* Image fallback for broken/missing images */
-img[src*="silver-surfer"] {
-  min-height: 200px;
-  background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(192, 192, 192, 0.05));
-  border: 2px dashed rgba(192, 192, 192, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-img[src*="silver-surfer"]::before {
-  content: '🏄‍♂️';
-  font-size: 3rem;
-  position: absolute;
-}
-
 .cosmic-showcase,
 .quotes-showcase {
   text-align: center;
@@ -277,6 +296,8 @@ img[src*="silver-surfer"]::before {
 .quotes-section,
 .fun-stats {
   padding: 80px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .origin-story h2,
