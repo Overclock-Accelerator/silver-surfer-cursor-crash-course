@@ -391,19 +391,31 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   padding: 25px;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 .power-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(192, 192, 192, 0.2);
+  transform: translateY(-20px) scale(1.08) rotate(1deg);
+  box-shadow: 
+    0 25px 60px rgba(192, 192, 192, 0.6),
+    0 0 40px rgba(192, 192, 192, 0.5),
+    inset 0 0 30px rgba(192, 192, 192, 0.1);
   border-color: var(--cosmic-silver);
+  background: rgba(255, 255, 255, 0.2);
+  border-width: 2px;
 }
 
 .power-card h3 {
   color: var(--cosmic-silver);
   margin-bottom: 15px;
   font-size: 1.2rem;
+  transition: all 0.5s ease;
+}
+
+.power-card:hover h3 {
+  color: var(--energy-yellow);
+  text-shadow: 0 0 20px var(--energy-yellow), 0 0 30px var(--energy-yellow);
+  transform: scale(1.05);
 }
 
 .power-card p {
